@@ -1,0 +1,108 @@
+<ol class="breadcrumb">
+	<li>当前位置</li>
+	<li>API列表</li>
+</ol>
+
+<div class="c-content">
+	
+	
+	<div class="c-searchN">
+		<div class="c-search-group col-md-4">
+			<span class="c-label">城市名称：</span>
+			<div class="c-conR"><input type="text" class="form-control" ></div>
+		</div>
+		<div class="c-search-group col-md-3">
+			<span class="c-label">行业：</span>
+			<div class="c-conR"><select class="form-control">
+				<option>全部</option>
+				
+			</select></div>
+		</div>
+		<div class="c-search-group col-md-4">
+			<span class="c-label">API名称：</span>
+			<div class="c-conR">
+				<input type="text" class="form-control" >
+			</div>
+		</div>
+		
+		
+		<div class="c-search-group col-md-1">
+			<a class="btn btn-danger">搜索</a>
+		</div>
+	</div>
+
+	
+	
+	<div class="of-h ptb15">
+		<div class="fl">共10条数据　<i class="glyphicon glyphicon-refresh fc-5cb"></i></div>
+
+	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr class="active">
+				<td><input type="checkbox"></td>
+				<th>ID</th>
+				<th>名称</th>
+				<th>行业分类</th>
+				<th>创建时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>api1039</td>
+				<td>南方航空航班查询</td>
+				<td>交通</td>
+				<td>2017-02-21 14:28</td>
+				<td>
+					<a data-toggle="modal" href="#/api/list/listLook">查看</a>
+					<a data-toggle="modal" data-target="#myDelete">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>api1039</td>
+				<td>南方航空航班查询</td>
+				<td>交通</td>
+				<td>2017-02-21 14:28</td>
+				<td>
+					<a>查看</a>
+					<a data-toggle="modal" data-target="#myDelete">删除</a>
+				</td>
+			</tr>
+
+		</tbody>
+
+	</table>
+
+	<!--<pl-page></pl-page>-->
+
+</div>
+<!-- / 删除modal -->
+<div class="modal" tabindex="-1" role="dialog" id="myDelete">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+				<h4 class="modal-title">删除API信息</h4>
+			</div>
+			<div class="modal-body">
+				<div class="hint">
+					您确定要删除选中的ＡＰＩ信息吗？删除后无法恢复。
+				</div>
+			</div>
+			<div class="modal-footer ta-c">
+				<a class="btn btn-success" data-dismiss="modal">确定</a>
+				<a class="btn btn-grey" data-dismiss="modal">取消</a>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+
+	</div>
+	<!-- /.modal-dialog -->
+
+</div>
+<!-- /.modal -->
+
+

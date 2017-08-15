@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <base href="/" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="shortcut icon" href="./img/favicon.ico"> -->
+    <link href="./img/favicon.ico" type="image/x-icon" rel="icon">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="css/common/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/common/font-awesome.min.css" />
+    <!--<link rel="stylesheet" type="text/css" href="css/common/jquery-ui.min.css" />-->
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/common/bootstrap-datetimepicker.min.css">
+  </head>
+  <body class="ng-hide" ng-show="engineStarted">
+    <div class="c-main">
+      <div ui-view></div>
+    </div>
+
+    <div id="zhlAlert" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header" style="padding:5px">
+            <button type="button" class="btnCancel close pl5" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="zhlTipTitle">&nbsp;</h4>
+          </div>
+          <div id="zhlTipMsg" class="modal-body tc"></div>
+          <div class="modal-footer tc" style="border-top:none;">
+            <button id="btnSure_id" type="button" class="btnOks btn btn-default" data-dismiss="modal">确定</button>
+            <button id="btnCancels" type="button" class="btnCancel btn btn-default ml20_imp" data-dismiss="modal">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="./vendors/jquery/jquery.min.js"></script>
+    <!--[if IE 9]>
+    <script type="text/javascript" src="./vendors/jquery.xdomainrequest.min.js"></script>
+    <script type="text/javascript">
+      window.isIE9=true;
+    </script>
+    <![endif]-->
+
+
+    <!--<script src="./vendors/lodash.min.js"></script>-->
+    <script src="./vendors/angular/angular.min.js"></script>
+    <!--<script src="./vendors/angular/angular-translate.min.js"></script>-->
+    <!--<script src="./vendors/angular/angular-translate-loader-static-files.min.js"></script>-->
+    <script src="./vendors/angular/angular-sanitize.min.js"></script>
+    <script src="./vendors/angular/angular-resource.min.js"></script>
+    <script src="./vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./vendors/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./vendors/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <!--<script src="./vendors/angular/angular-resource.js"></script>-->
+    <script src="./vendors/angular/angular-ui-router.min.js"></script>
+    <script src="./vendors/angular/angular-cookies.min.js"></script>
+    <!--<script src="./vendors/md5.js" async="true"></script>-->
+    <!--<script src="./vendors/big.min.js" async="true"></script>-->
+
+
+    <script src="./vendors/LABjs/LAB.min.js"></script>
+    <script src="./engine/setting.js"></script>
+    <script src="./engine/tools.js"></script>
+    <script src="./js/zhl.js"></script>
+    <script src="./engine/common.js"></script>
+    <script src="./engine/app.js"></script>
+    <script src="./engine/route.js"></script>
+    <script src="./engine/loader.js" async="false"></script>
+   
+    <!--ckeditor.js-->
+    <!--<script src="./vendors/ckeditor/ckeditor.js"></script>-->
+    <!--<script src="./vendors/ckeditor/config.js"></script>-->
+
+  </body>
+</html>

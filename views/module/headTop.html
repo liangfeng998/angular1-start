@@ -1,0 +1,35 @@
+<style type="text/css">
+    /*头部*/
+    .header_top{width:100%;height:30px;line-height:30px;min-width:1024px;float:left;overflow:hidden;background:#171c57;position:relative;z-index:100;}
+    .header_top a:link{color:inherit;}
+    .header_contain{min-width:854px;color:#fff;margin-left:105px;margin-right:65px;font-size:12px;}
+    .header_contain .cur{border-bottom:2px solid #fff;}
+    .ml23{margin-left:23px}
+    .ml32{margin-left:32px}
+    .visit_mobile{padding-left:12px;background:url(img/icon/sjdl.png) no-repeat left center;}
+</style>
+<div class="header_top">
+    <div class="header_contain">
+        <div class="fl">
+            <img src="./img/logo.png" style="height:16px;margin-right: 3px;"/>
+            <span ng-bind="userinfo.nickName"></span>&nbsp;<span><a href="index" style="color:#fff;">欢迎来到即享云平台</a></span>
+            <span class="ng-hide" ng-show="!_user_.isLogin()">
+                <a class="ml23" href="login">登录</a>
+                <span class="ml10">|</span>
+                <!-- <a class="ml10" href="register/step1">注册</a> -->
+                <span class="ml10 pointer" onclick="zhlModalTip('请先预约开通！');">注册</span>
+            </span>
+            <span class="ng-hide" ng-show="_user_.isLogin()">
+                <a class="ml23" href="#" ng-click="_user_.logout()">登出</a>
+            </span>
+            <a class="ml20 visit_mobile" href="#">访问手机版</a>
+        </div>
+        <div class="fr">
+            <!-- <a href="#">我的供应云</a>
+            <a class="ml23" href="#">开放平台</a>
+            <a class="ml23" href="#">微信</a>
+            <a class="ml23" href="#">帮助中心</a> -->
+            <span class="ml23">服务热线：4006023399</span>
+        </div>
+    </div>
+</div>

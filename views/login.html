@@ -1,0 +1,93 @@
+<load-view src="views/module/headTop_login.html"></load-view>
+<style type="text/css">
+    body{ background:#e3f1fa  url(./img/login/bg.jpg) no-repeat top center;}
+    @media (min-width: 1920px){
+        body{background-size: 100%;}
+    }
+    .abs{height:100%;}
+    .bottom_login{color:#fff;text-align:center;font-size:14px;background-color: transparent;}
+    .login_main{width: 450px; min-height: 500px;max-height: 560px; padding:50px; padding-top: 30px; position: absolute; left: 50%; top:50%; margin-left: -225px; margin-top: -250px; background: #fff;}
+    .login_main .login_container{overflow:hidden;position:relative ; width: 350px;}
+    .login .tit{display: block;width: 200px; height: 150px; margin: 0 auto; background: url(./img/login/login_tit.png) no-repeat top center;}
+    .w-user .w015{margin-bottom: 15px;}
+    .w-user .w010{margin-bottom: 10px;}
+    .w-user .txt{border:1px solid #d7d7d7;height: 50px;line-height:50px;width: 100%;padding: 0 15px;}
+    .w-user .txt_code{float: left;border:1px solid #d7d7d7;width: 185px;height: 50px;line-height: 50px;padding: 0 15px;}
+    .w-user .img_code{float: right;width: 150px;height: 50px;text-align: center;vertical-align: middle;background: #e7e7e7;}
+    .w-user .img_code img{height: 50px;cursor: pointer;}
+    .w-user .w-btn {border: 0;width: 100%;height: 50px;line-height: 50px;text-align: center;font-size: 16px; color: #fff;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;background-color: #00b5e2;}
+    .w-user .login-btm{color: #777;font-size:12px;}
+    .w-user .login-btm label{font-weight: normal;}
+    .w-user .login-btm label input[type="checkbox"]{margin: 1px 3px 0 0;}
+    .w-user .login-btm a{color: #777;}
+    .w-user .login-btm a:hover{color: #337ab7;text-decoration: none;}
+    .w-user .login-btm .mlr3{margin: 0 3px;}
+    .w-user .n-btn {border: 0;width: 100%;height: 50px;line-height: 50px;text-align: center;font-size: 16px; color: #fff;-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;background-color: #cccccc;}
+    /*调整样式 2/26*/
+    div[class*=input-label]{color: #606060;}
+
+</style>
+<script type="text/javascript">
+    $(function(){
+        $('.step').hide();
+        $('.step.step2-2').show();
+
+        $(".cccBT").mouseover(function(){
+            $(this).css("background-color","#00b5e2");
+        });
+        $(".cccBT").mouseout(function(){
+            $(this).css("background-color","#cccccc");
+        });
+    });
+</script>
+<div id="divLogin" class="login_main">
+    <div class="login_container">
+        <div class="login">
+            <div class="tit"></div>
+            <div class="login_body">
+                <!-- step1 start -->
+                <div class="w-user w-user-2 clearfix">               
+                    <div class="w015"><input id="txtName" class="txt" type="text" ng-model="account" placeholder="手机号／即享帐号"></div>
+                    <div class="w015"><input id="txtPwd" class="txt" type="password" ng-model="password" placeholder="密码"></div>
+                    <div class="w015 clearfix ng-hide" ng-show="isDisplayVerifyCode==1">
+                        <input class="txt_code" ng-model="verifyCode" type="text" placeholder="验证码">
+                        <span class="img_code"><img ng-src="{{imgUrl}}" title="看不清，换一张" ng-click="getImgVerify();"></span>
+                    </div>  
+                    <div class="w010">
+                        <button id="btnSubmit" class="w-btn" ng-click="login()" ng-disabled="submiting">登录</button>
+                    </div> 
+                    <div class="login-btm clearfix">
+                        <label class="fl"><input ng-model="rememberMe" class="checkbox15 dis_vm fl" type="checkbox"><span class="dis_vm fl">记住我</span></label>
+                        <span class="fl mlr3">/</span>
+                        <a class="fl forgetPW" href="forgetPW">忘记密码？</a>
+                        <span class="fr pointer" onclick="zhlModalTip('请先预约开通！');">注册即享账号</span>
+                         <!--<a class="fr" href="register/step1">注册即享账号</a>-->
+                    </div>
+                    <div ng-hide="hasInvite" class="mt10">
+                        <button class="n-btn fl cccBT" style="width: 48%" ng-click="experienceBt()">我要体验</button>
+                        <a href="booking" target="_blank">
+                            <button class="n-btn fr cccBT" style="width: 48%">预约开通</button>
+                        </a>
+                        <br clear="all"/>
+                    </div>
+                </div>
+                <!-- step1 end -->
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //回车
+    document.getElementById('divLogin').onkeydown = function (event) {
+        var e = event ? event : (window.event ? window.event : null);
+        if (e.keyCode == 13) {
+            if( document.getElementById('zhlAlert').style.display != "block" ){
+                document.getElementById('btnSubmit').click();
+            }else{
+                document.getElementById('btnSure_id').click();
+                $('#txtName').focus();
+            }
+        }
+    };
+</script>
+<load-view src="views/module/bottom.html"></load-view>

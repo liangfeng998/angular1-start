@@ -1,0 +1,37 @@
+<style type="text/css">
+    /*头部*/
+    .header_min{
+      width:100%;height:65px;min-width:1024px;float:left;overflow:hidden;position:relative;z-index:100;
+      background: -webkit-linear-gradient(left, #0156b4, #00e5ff); /* Safari 5.1 - 6.0 */
+      background: -o-linear-gradient(right, #0156b4, #00e5ff); /* Opera 11.1 - 12.0 */
+      background: -moz-linear-gradient(right, #0156b4, #00e5ff); /* Firefox 3.6 - 15 */
+      background: linear-gradient(to right, #0156b4, #00e5ff); /* 标准的语法 */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0156b4', endColorstr='#00e5ff',GradientType=1 ); 
+    }
+    .header_min a{text-decoration:none;}
+    .header_min a:link{color:inherit;}
+    .header_contain{min-width:854px;color:#fff;margin-left:105px;margin-right:65px;font-size:12px;}
+    .header_contain .cur{border-bottom:2px solid #fff;}
+    .ml32{margin-left:32px}
+    .ml32 a{color:#fff;}
+    .cur a{color:rgb(51, 122, 183);}
+</style>
+<div class="header_min">
+    <div class="header_contain">
+        <div class="fl f20 PTit30 mt15">
+            <div class="fl" style="width:60px;height:30px;">
+                <img ng-src="{{strLogoUrl}}" border="" width="100%" height="100%"/>
+            </div>
+            <span class="fl ml32" ng-bind="userinfo.companyName"></span>
+            <span class="fl ml10" ng-bind="userinfo.companyCode"></span>
+            <div style="display:none;" class="fl pr"><div class="pa badge-red"></div></div>
+        </div>
+        <ul class="fr f16 mt15">
+            <li ng-repeat="item in _TOPMENU_" class="fl ml32 PTit30" ng-class="{'cur':item.isCurrentMenu}"><a ng-href="{{item.firstUrl}}" ng-bind="item.menuName"></a></li>
+            <!--<li class="fl PTit30" ng-class="{'cur':curModule == 'mypurchase'}"><a href="./mypurchase">我的采购</a></li>-->
+            <!--<li class="fl ml32 PTit30" ng-class="{'cur':curModule == 'mysale'}"><a href="./mysale">我的销售</a></li>-->
+            <!--<li class="fl ml32 PTit30" ng-class="{'cur':curModule == 'businessmanage'}"><a href="./businessmanage">企业管理</a></li>-->
+        </ul>
+    </div>
+</div>
+<global-model></global-model>

@@ -1,0 +1,226 @@
+<!-- 左侧导航 -->
+<style rel="stylesheet">
+    .nav-left {
+        width: 116px;
+        background: #142F5C;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 10;
+        transition: width .3s;
+        -moz-transition: width .3s; /* Firefox 4 */
+        -webkit-transition: width .3s; /* Safari 和 Chrome */
+        -o-transition: width .3s;
+    }
+    .nav-shrink {
+        width: 50px;
+        transition: width .3s;
+        -moz-transition: width .3s; /* Firefox 4 */
+        -webkit-transition: width .3s; /* Safari 和 Chrome */
+        -o-transition: width .3s;
+    }
+    .nav-left a {
+        cursor: pointer;
+    }
+    .main-expend {
+        margin-left: 50px;
+    }
+    .menu-toggle {
+        border: none;
+        margin-left: 12px;
+    }
+    .menu-toggle img{
+        background: #142F5C;width:25px;
+    }
+    .imgExpend {}
+    .imgShrink {
+        display: none;
+    }
+    .li-menu {
+        padding-left: 9px;
+        position: relative;
+        height: 30px;
+        overflow: hidden;
+        margin: 7px 0;
+    }
+    .li-menu-hover {
+        overflow: visible;
+    }
+    .menu-name {
+        color: #fff;
+        width: 66px;
+        line-height: 31px;
+        font-size: 12px;
+    }
+    .secondmenu {
+        display: inline-block;
+        width: 100%;
+        line-height: 20px;
+        padding: 5px 15px 0 12px;
+        color: #fff;
+    }
+    a.secondmenu:hover {
+        color: #5AB1FF;
+    }
+    .arrow {
+        margin-top: 9px;
+        height: 13px;
+        width: 11px;
+    }
+    .arrow-right {
+        display: inline-block;
+    }
+    .arrow-down {
+        display: none;
+    }
+    .icon-img {
+        width: 24px;
+        height: 24px;
+        margin: 3px;
+    }
+    .ul-second {
+        position: relative;
+        top: 0;
+        float: left;
+        opacity: 0.8;
+        background: #142F5C;
+        border-radius: 2px;
+        padding-bottom: 5px;
+        padding-top: 3px;
+        display: none;
+    }
+    .menu-link {
+        float: left;
+    }
+    .menu-link img {
+        float: left;
+    }
+    .menu-link span {
+        float: left;
+    }
+    .menu-link-hover {
+        background: #0C1149;
+        border-radius: 2px;
+    }
+    .menu-link-hover .icon-img {
+        background: #0091CD;
+        border-radius: 2px;
+    }
+    .div-abs {
+        width: 231px;
+        height: 30px;
+        line-height: 30px;
+        position: absolute;
+    }
+    .div-abs-shrink {
+        width: 40px;
+    }
+    .active {
+        background: #0C1149;
+        border-radius: 2px;
+    }
+    .active .icon-img {
+        background: #0091CD;
+        border-radius: 2px;
+    }
+</style>
+
+<div class="nav-left nav-expend">
+    <div class="DivH100"></div>
+    <div>
+        <div style="">
+            <button type="button" class="imgExpend menu-toggle">
+                <img src="./img/left/expend.png"/>
+            </button>
+            <button type="button" class="imgShrink menu-toggle">
+                <img src="./img/left/shrink.png"/>
+            </button>
+        </div>
+        <div>
+            <ul>
+                <li ng-repeat="item in _CURRENTMENU_.child" class="li-menu">
+                    <div class="div-abs">
+                        <a ng-click="menuClick(item.url,$event)" ng-href="{{item.pageUrl}}" class="menu-link"
+                           ng-class="{'active':(item.selected==true)}">
+                            <img class="icon-img" ng-src="{{item.pageIconUrl}}"/>
+                            <span class="menu-name">{{item.menuName}}</span>
+                            <span ng-style="{visibility:(item.hasChild ? 'visible':'hidden')}">
+                                <img class="arrow arrow-right" src="./img/left/arrow-right.png"/>
+                                <img class="arrow arrow-down" src="./img/left/arrow-down.png"/>
+                            </span>
+                        </a>
+                        <ul ng-if="item.hasChild" class="ul-second">
+                            <li ng-repeat="chd in item.child" style="line-height:25px;font-size:12px;">
+                                <a ng-click="menuClick(chd.url,$event)" ng-href="{{chd.pageUrl}}" class="secondmenu">{{chd.menuName}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div style="height:98px;background: #142F5C;"></div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // 折叠/展开菜单
+        $(document).on('click', ".menu-toggle", function () {
+            var $this = $(this);
+            $this.hide();
+            //点击菜单展开按钮（进行折叠）
+            if ($this.hasClass('imgExpend')) {
+                //显示折叠按钮
+                $('.imgShrink').show();
+                // 隐藏菜单汉字名称
+                $('.menu-name').hide();
+                //调整菜单栏宽度（变窄）
+                $('.nav-left').addClass('nav-shrink');
+                // $('.div-abs').addClass('div-abs-shrink');
+                // 增加右侧主体内容区域宽度
+                $('.body_main_nav').addClass('main-expend');
+            } else {
+                $('.imgExpend').show();
+                $('.menu-name').show();
+                $('.nav-left').removeClass('nav-shrink');
+                // $('.div-abs').removeClass('div-abs-shrink');
+                $('.body_main_nav').removeClass('main-expend');
+            }
+
+        });
+        // 鼠标放到菜单上面
+        $(document).on('mouseover', ".li-menu", function () {
+            var $this = $(this);
+            $this.addClass('li-menu-hover');
+            $this.find('.ul-second').show();//显示二级菜单
+            $this.find('.arrow-right').hide();//箭头
+            $this.find('.arrow-down').show();
+            $this.find('.menu-link').addClass('menu-link-hover');
+
+            var $secondMenu = $this.find('.ul-second');
+            if ($secondMenu.length > 0) {
+                if (document.documentElement.clientHeight - ($secondMenu.offset().top + $secondMenu.height()) < 0) {
+                    $secondMenu.css('top', -$secondMenu.height() + 23);
+                }
+            }
+        });
+        $(document).on('mouseleave', ".li-menu", function () {
+            var $this = $(this);
+            var $secondMenu = $this.find('.ul-second');
+            if ($secondMenu.length > 0 && ($secondMenu.position().top < 0)) {
+                $secondMenu.css('top', 0);
+            }
+
+            $this.removeClass('li-menu-hover');
+            $this.find('.ul-second').hide();
+            $this.find('.arrow-down').hide();
+            $this.find('.arrow-right').show();
+            $this.find('.menu-link').removeClass('menu-link-hover');
+        });
+    });
+</script>
+
+
